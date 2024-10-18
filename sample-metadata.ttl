@@ -1,0 +1,124 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix terms: <http://sample-site/politicalgeography/vocabularies/terms#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sharepoint-taxonomy: <http://aka.ms/sp-taxonomy-syntax/> .
+
+<http://sample-site/politicalgeography/vocabularies/terms> a owl:Ontology .
+
+terms:politicalgeography a sharepoint-taxonomy:TermSet;
+  sharepoint-taxonomy:description "A sample term set, describing a simple political geography."@en-us;
+  sharepoint-taxonomy:termSetName "Political Geography"@en-us;
+  sharepoint-taxonomy:isAvailableForTagging "false"^^xsd:boolean;
+  sharepoint-taxonomy:HasTopLevelTerm terms:continent ;
+  terms:study "international relations"^^xsd:string ;
+  terms:studyPart2 "Political relations"^^xsd:string .
+
+terms:continent a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "One of the seven main land masses (Europe, Asia, Africa, North America, South America, Australia, and Antarctica)"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:child terms:politicalentity;
+  sharepoint-taxonomy:defaultLabel "Continent"@en-us;
+    sharepoint-taxonomy:otherLabel "Continental landmass"@en-us;
+  sharepoint-taxonomy:otherLabel "Continent"@en-us;
+  sharepoint-taxonomy:topLevelTermOf terms:politicalgeography;
+  terms:total "7"^^xsd:integer ;
+  terms:NorthPole "Arctic"^^xsd:string ;
+  terms:SouthPole "Antarctic"^^xsd:string .
+
+terms:politicalentity a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:continent;
+  sharepoint-taxonomy:description "Entity defined by people, not visible to the naked eye"@en-us;
+    sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:child terms:country;
+  sharepoint-taxonomy:defaultLabel "Political Entity"@en-us .
+
+terms:country a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:politicalentity;
+  sharepoint-taxonomy:description "Politically defined state with a geographic area governed by a central government"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:child terms:provinceorstate;
+  sharepoint-taxonomy:defaultLabel "Country"@en-us .
+
+terms:provinceorstate a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:country;
+  sharepoint-taxonomy:description "Administrative division of a country"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:child terms:countyorregion;
+  sharepoint-taxonomy:defaultLabel "Province or State"@en-us .
+
+terms:countyorregion a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:provinceorstate;
+  sharepoint-taxonomy:description "Large sub-region usually containing many cities and towns"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:child terms:city, terms:hamlet, terms:town, terms:village;
+  sharepoint-taxonomy:defaultLabel "County or Region"@en-us .
+
+terms:hamlet a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:countyorregion;
+  sharepoint-taxonomy:description "Small village"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:defaultLabel "Hamlet"@en-us .
+
+terms:village a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:countyorregion;
+  sharepoint-taxonomy:description "Collection of homes and business, often incorporated"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:defaultLabel "Village"@en-us .
+
+terms:town a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:countyorregion;
+  sharepoint-taxonomy:description "A small city"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:defaultLabel "Town"@en-us .
+
+terms:city a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:countyorregion;
+  sharepoint-taxonomy:description "An incorporated town with a large population, usually governed by a mayor or council"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:child terms:borough, terms:district, terms:neighborhood;
+  sharepoint-taxonomy:defaultLabel "City"@en-us .
+
+terms:district a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:city;
+  sharepoint-taxonomy:description "A division of a city, often repesented in the city government"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:defaultLabel "District"@en-us .
+
+terms:borough a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:city;
+  sharepoint-taxonomy:description "A sub-section of a city"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:defaultLabel "Borough"@en-us .
+
+terms:neighborhood a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:parent terms:city;
+  sharepoint-taxonomy:description "Unofficial district or area of a city or town"@en-us;
+  sharepoint-taxonomy:inTermSet terms:politicalgeography;
+  sharepoint-taxonomy:defaultLabel "Neighborhood"@en-us .
+  
+terms:study a sharepoint-taxonomy:CustomPropertyForTermSet;
+  sharepoint-taxonomy:propertyName "study"^^xsd:string .
+
+terms:studyPart2 a sharepoint-taxonomy:CustomPropertyForTermSet;
+  sharepoint-taxonomy:propertyName "studyPart2"^^xsd:string .
+
+terms:total a sharepoint-taxonomy:LocalCustomPropertyForTerm;
+  sharepoint-taxonomy:propertyName "Total Number"^^xsd:string .
+  
+terms:NorthPole a sharepoint-taxonomy:SharedCustomPropertyForTerm;
+  sharepoint-taxonomy:propertyName "North Pole At"^^xsd:string .
+  
+terms:SouthPole a sharepoint-taxonomy:SharedCustomPropertyForTerm;
+  sharepoint-taxonomy:propertyName "South Pole At"^^xsd:string .
