@@ -1,0 +1,78 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix terms: <http://example.org/animals#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sharepoint-taxonomy: <http://aka.ms/sp-taxonomy-syntax/> .
+
+<http://example.org/animals/vocabularies/terms> a owl:Ontology .
+
+terms:animalHierarchy a sharepoint-taxonomy:TermSet;
+  sharepoint-taxonomy:description "A sample term set, describing a simple animal hierarchy."@en-us;
+  sharepoint-taxonomy:termSetName "Animal Hierarchy"@en-us;
+  sharepoint-taxonomy:isAvailableForTagging "false"^^xsd:boolean;
+  sharepoint-taxonomy:HasTopLevelTerm terms:animal .
+
+terms:animal a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A living organism that feeds on organic matter, typically having specialized sense organs and nervous system."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:child terms:mammal, terms:bird, terms:reptile;
+  sharepoint-taxonomy:defaultLabel "Animal"@en-us;
+  sharepoint-taxonomy:otherLabel "Living Organism"@en-us;
+  sharepoint-taxonomy:topLevelTermOf terms:animalHierarchy .
+
+terms:mammal a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A warm-blooded vertebrate animal of a class that is distinguished by the possession of hair or fur, the secretion of milk by females for the nourishment of the young, and (typically) the birth of live young."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:child terms:cat, terms:dog;
+  sharepoint-taxonomy:defaultLabel "Mammal"@en-us .
+
+terms:bird a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A warm-blooded egg-laying vertebrate animal distinguished by the possession of feathers, wings, and a beak and (typically) by being able to fly."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:child terms:eagle, terms:parrot;
+  sharepoint-taxonomy:defaultLabel "Bird"@en-us .
+
+terms:reptile a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A cold-blooded vertebrate of a class that includes snakes, lizards, crocodiles, turtles, and tortoises. They are distinguished by having a dry scaly skin, and typically laying soft-shelled eggs on land."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:child terms:snake, terms:turtle;
+  sharepoint-taxonomy:defaultLabel "Reptile"@en-us .
+
+terms:cat a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:defaultLabel "Cat"@en-us .
+
+terms:dog a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractile claws, and a barking, howling, or whining voice."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:defaultLabel "Dog"@en-us .
+
+terms:eagle a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A large bird of prey with a massive hooked bill and long broad wings, renowned for its keen sight and powerful soaring flight."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:defaultLabel "Eagle"@en-us .
+
+terms:parrot a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A bird, often vividly colored, with a short down-curved hooked bill, grasping feet, and a raucous voice, found especially in the tropics and feeding on fruits and seeds."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:defaultLabel "Parrot"@en-us .
+
+terms:snake a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A long limbless reptile that has no eyelids, a short tail, and jaws that are capable of considerable extension."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:defaultLabel "Snake"@en-us .
+
+terms:turtle a sharepoint-taxonomy:Term;
+  sharepoint-taxonomy:isAvailableForTagging "true"^^xsd:boolean;
+  sharepoint-taxonomy:description "A slow-moving reptile, enclosed in a scaly or leathery domed shell, into which it can retract its head and thick legs."@en-us;
+  sharepoint-taxonomy:inTermSet terms:animalHierarchy;
+  sharepoint-taxonomy:defaultLabel "Turtle"@en-us .
